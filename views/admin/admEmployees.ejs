@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheets/admin.css">
+        <link rel="stylesheet" href="/stylesheets/tables.css">
+        <link rel="stylesheet" href="/stylesheets/admEmpForm.css">
+        <script src="https://kit.fontawesome.com/d1a2b3af9c.js" crossorigin="anonymous"></script>
+        <title><%= title %></title>
+    </head>
+    
+    <body>
+        <div class="body_contain">
+            <!--------- DASHBOARD MENU --------->
+            <section class="dash_menu ">
+                <a href="/" class="links">
+                    <div class="logo">
+                        <div class="logo-img">
+                            <img src="https://pngroyale.com/wp-content/uploads/2021/11/Download-house-logo-design-vector-real-estate-logo-photos-.png" alt="">
+                        </div>
+                        <div class="logo_txt">
+                            <h1>SERHANT CONSTRUCTION<br>COMPANY</h1>
+                        </div>
+                    </div>
+                </a>
+                <div class="profil_info">
+                    <div class="profile_photo">
+                        <img src="https://images.unsplash.com/photo-1627161684458-a62da52b51c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=549&q=80" alt="">
+                    </div>
+                    <span><%= my_session.emp_fnm %> <%= my_session.emp_lnm %></span>
+                    <h4><%= depPosData.dep_nm %></h4>
+                    <h4><%= depPosData.pos_nm %></h4>
+                </div>
+                <div class="dash_opts">
+                    
+                    <details class="option">
+                        <summary><a href="/admin"><i class="fa-solid fa-house-user"></i>Dashboard</a></summary>
+                    </details>
+    
+                    <% if (my_session.loggedin == true && my_session.emp_pos == 2){ %>
+                        <details class="option">
+                            <summary><i class="fa-solid fa-users"></i>My Department</summary>
+                            <p><a href="/admin/employees" title="View All Department Employees">Employees</a></p>
+                            <!-- <p><a href="/admin/pay-cycles" title="View Employee Pay-Cycles">Pay Cycles</a></p> -->
+                            <p><a href="/admin/pay-cycles" title="View Employee Pay-Cycles">Department Salary</a></p>
+                        </details>
+
+                    <%} else if (my_session.loggedin == true && my_session.emp_pos == 3){%>
+                        <details class="option">
+                            <summary><a href="/admin/dolphin-cove-bookings" title="View All Dolphin Cove Bookings"><i class="fa-solid fa-book-bookmark"></i>Cove Bookings</a></summary>
+                        </details>
+
+                        <details class="option">
+                            <summary><a href="/admin/dolphin-cove-programs" title="View All Dolphin Cove Programs"><i class="fa-solid fa-calendar-days"></i>Cove Programs</a></summary>
+                        </details>
+                    <%} %>
+
+                    <a class="logOut" href="/auth/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> log out</a>
+                </div>        
+            </section>
+        
+    
+            <!--------- BODY / MAIN --------->
+            <section class="body_main ">
+                <div class="top_bar">
+                    <div onclick="hideMenu()" title="Side Bar" class="menu_bars ">
+                    <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+    
+                <h1>Department Employess</h1>
+
+                <section class="form_ctrl">
+            
+                    <h2>New Employee Form</h2>
+                    <form action="/admin/employee/new" method="post" class="empAddForm">
+                        
+                        <input type="hidden" name="dep_id" value= "<%= my_session
+                        .emp_dep %>">
+                        <input type="hidden" name="pos_id" value= "4">
+                        
+                        <div class="flexInptBx">
+                            <div class="inpt">
+                                <label for="emp_fnm"><i class="fa-solid fa-location-arrow"></i> First Name</label>
+                                <br>
+                                <input type="text" name="emp_fnm"- id="emp_fnm">
+                            </div>
+
+                            <div class="inpt2">
+                                <label for="emp_lnm"><i class="fa-solid fa-location-arrow"></i> Last Name</label>
+                                <br>
+                                <input type="text" name="emp_lnm"- id="emp_lnm">
+                            </div>
+                        </div>
+                        
+                        <div class="inptBx">
+                            <label for="emp_email"><i class="fa-solid fa-user-group"></i> Email</label><br>
+                            <input type="email" id="emp_email" name="emp_email">
+                        </div>
+
+                        <div class="inptBx">
+                            <label for="emp_pss"><i class="fa-solid fa-user-group"></i> Password</label><br>
+                            <input type="password" id="emp_pss" name="emp_pss">
+                        </div>
+
+                        <div class="btnContain">
+                            <button type="submit">Submit</button>
+                        </div>
+
+                    </form>
+                </section>
+                <br><br><br>
+
+                <h2 style="text-align: center; color: rgb(0, 0, 0);"><%= depPosData.dep_nm %> Employees</h2>
+                <div class="table-contain">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID#</th>
+                                <th>Employee</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(depEmpData.length){
+                   
+                                for(var i = 0; i < depEmpData.length; i++) {%>  
+                                    <tr>
+                                        <th><%= depEmpData[i].id %></th>
+                                        <td><%= depEmpData[i].emp_fnm %> <%= depEmpData[i].emp_lnm %></td>
+                                        <td><%= depEmpData[i].pos_nm %></td>
+                                        <td><%= depEmpData[i].dep_nm %></td> 
+                                        <td colspan="2">
+                                            <a href="/admin/edit-employee/:id" title="Update Employee info and work hours"><i class="fa-solid fa-pencil"></i></a>                                            
+                                        </td>
+                                    </tr>
+                                <% }
+                            }else{ %>
+                                <tr>
+                                    <td colspan="6"><h2>No Eployees</h2>
+                                        <div class="empty">
+                                            <img src="https://assets.materialup.com/uploads/c83a9663-be0b-4397-b1af-67f520e44ef1/preview.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% } %>    
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+            <% if (messages.success) { %>
+                <div class="scss_mssg_cont">
+                    <div class="scss_mssg">
+                        <span class="closeX" onclick="closeX()"><i class="fa-solid fa-xmark"></i></span>
+                        <h3><%- messages.success %></h3>
+                    </div>
+                </div> 
+            <% } %> 
+    
+        <script>
+            function hideMenu(){
+                document.querySelector('.dash_menu').classList.toggle('showHide');
+                document.querySelector('.body_main').classList.toggle('width_adjust');
+            }
+
+            var closeX = () => {
+                document.querySelector('.scss_mssg_cont').classList.add('close');
+            }
+        </script>
+    </body>
+</html>

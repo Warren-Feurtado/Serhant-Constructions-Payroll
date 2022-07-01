@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+    <script src="https://kit.fontawesome.com/d1a2b3af9c.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="flxBx">
+        <div class="leftBg">
+            <div class="imgBx">
+                <img src="https://pngroyale.com/wp-content/uploads/2021/11/Download-house-logo-design-vector-real-estate-logo-photos-.png" alt="">
+            </div>
+            <h1>SERHANT CONSTRUCTION<br>COMPANY</h1>
+            <h2>PAYROLL SYSTEM</h2>
+            <a href="/auth/admin-login" class="logSwitch">Admin Login</a>
+        </div>
+    
+        <div class="frmContain">
+            <form action="/auth/staff/check" method="post">
+                <h1>Staff Login</h1>
+                <div class="inptBx">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="email" id="emp_email" name="email" placeholder="Email Address">
+                </div>
+                <div class="inptBx">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="emp_pss" name="password" placeholder="Password">
+                </div>
+    
+                <div class="btnContain">
+                    <button type="submit" class="frm_btn"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log in</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

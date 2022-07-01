@@ -1,0 +1,121 @@
+
+
+.body_main .table-contain{
+    width: 90%;
+    /* height: 35vw; */
+    margin: 2vw 0 2vw 50%;
+    padding: 1vw 0;
+    /* margin-top: 2vw;
+    margin-left: 50%; */
+    transform: translateX(-50%);
+    /* height: 50%; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* border: 1px solid red; */
+    background: rgba(255, 255, 255, 0.975);
+    border-radius: 2px;
+    box-shadow: 3px 3px 8px 2px rgba(32, 31, 31, 0.341);
+}
+
+.table-contain table{
+    width: 98%;
+    height: 98%;
+    margin: auto;
+    /* margin: 2vw 0 0 50%; */
+    /* transform: translateX(-50%); */
+    
+    /* border: 1px solid rgb(142, 142, 142); */
+    
+    border-collapse: collapse;
+    
+}
+
+table tr:nth-child(even){
+    /* width: 30vw; */
+    /* height: 2vw; */
+    /* padding: 1vw; */
+    /* margin: 2vw 0; */
+    background: rgb(225, 244, 240);
+    /* border-bottom: 1px solid rgba(12, 75, 72, 0.375); */
+}
+/* table tr .borderLeft{
+    width: 30vw;
+    height: 2vw;
+    padding: 1vw;
+    margin: 2vw 0;
+    border-left: 1px solid rgba(45, 150, 255, 0.192);
+} */
+
+
+table th{
+    /* width: 30vw; */
+    /* height: 2vw; */
+    padding: 0.5vw;
+    /* background-color: rgb(0, 0, 0); */
+    /* color: white; */
+    /* margin: 2vw 0; */
+    /* border: 1px solid rgb(142, 142, 142); */
+}
+table td{
+    /* width: 30vw; */
+    /* height: 1vw; */
+    text-align: center;
+    padding: 1vw 0.5vw;
+    /* background-color: rgba(255, 255, 255, 0.664); */
+    /* border: 1px solid rgb(142, 142, 142); */
+    /* border-left: 1px solid red; */
+}
+table td .fa-clipboard{
+   margin: 0 1vw;
+  
+}
+table td i{
+    font-size: 1.3vw;
+    color: rgb(42, 35, 173); 
+}
+
+table td .fa-trash-can{
+    color: rgb(212, 18, 18);
+}
+
+
+ table td input, table td textarea, table td select{
+    width: 100%;
+    height: 100%;
+    border: none;
+    line-height: 1.5;
+    background: transparent;
+    text-align: center;
+}
+
+table td img{
+    width: 10vw;
+    height: 6vw;
+}
+
+.empty{
+    width: 25%;
+    /* height: 40%; */
+    margin: auto;
+    /* opacity: 0.7; */
+    overflow: hidden;
+}
+
+.empty img{
+    width: 100%;
+    transform: scale(1.17);
+    height: 100%;
+}
+
+.sub_btn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: transparent;
+    font-size: 1.5vw;
+    cursor: pointer;
+}
