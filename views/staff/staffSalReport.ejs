@@ -35,21 +35,12 @@
                 <div class="dash_opts">
                     
                     <details class="option">
-                        <summary><a href="/admin"><i class="fa-solid fa-house-user"></i>Dashboard</a></summary>
+                        <summary><a href="/"><i class="fa-solid fa-house-user"></i>Dashboard</a></summary>
                     </details>
     
-                    <% if (my_session.loggedin == true && my_session.emp_pos == 2){ %>
-                        <details class="option">
-                            <summary><i class="fa-solid fa-users"></i>My Department</summary>
-                            <p><a href="/admin/employees" title="View All Department Employees">Employees</a></p>
-                            <p><a href="/admin/department/salary-summary" title="View Department Salary Summary">Department Salary</a></p>
-                        </details>
-
-                    <%} else if (my_session.loggedin == true && my_session.emp_pos == 3){%>
-                        <details class="option">
-                            <summary><a href="/accounts/employees"><i class="fa-solid fa-users"></i>Manage Employees</a></summary>
-                        </details>
-                    <%} %>
+                    <details class="option">
+                        <summary><a href="/salary-report/<%= empData.emp_id %>"><i class="fa-solid fa-users"></i>My Salary</a></summary>
+                    </details>
 
                     <a class="logOut" href="/auth/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> log out</a>
                 </div>        
@@ -64,11 +55,8 @@
                     </div>
                 </div>
     
-                <h1>Employee Salary Reports</h1>
+                <h1><%= empData.emp_fnm %>'s Salary Reports</h1>
 
-                <!-- <form action="">
-                    <input type="search" placeholder="search by date"><button type="submit">Search</button>
-                </form> -->
 
                 <div class="table-contain">
                     <table>

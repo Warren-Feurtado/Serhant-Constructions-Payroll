@@ -1,1 +1,80 @@
-<p>Staff Home Works</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheets/admin.css">
+        <script src="https://kit.fontawesome.com/d1a2b3af9c.js" crossorigin="anonymous"></script>
+        <title><%= title %></title>
+    </head>
+    
+    <body>
+        <div class="body_contain">
+            <!--------- DASHBOARD MENU --------->
+            <section class="dash_menu ">
+                <a href="/" class="links">
+                    <div class="logo">
+                        <div class="logo-img">
+                            <img src="https://pngroyale.com/wp-content/uploads/2021/11/Download-house-logo-design-vector-real-estate-logo-photos-.png" alt="">
+                        </div>
+                        <div class="logo_txt">
+                            <h1>SERHANT CONSTRUCTION<br>COMPANY</h1>
+                        </div>
+                    </div>
+                </a>
+                <div class="profil_info">
+                    <div class="profile_photo">
+                        <img src="https://images.unsplash.com/photo-1627161684458-a62da52b51c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=549&q=80" alt="">
+                    </div>
+                    <span><%= my_session.emp_fnm %> <%= my_session.emp_lnm %></span>
+                    <h4><%= depPosData.dep_nm %></h4>
+                    <h4><%= depPosData.pos_nm %></h4>
+                </div>
+                <div class="dash_opts">
+                    
+                    <details class="option">
+                        <summary><a href="/"><i class="fa-solid fa-house-user"></i>Dashboard</a></summary>
+                    </details>
+    
+                    <details class="option">
+                        <summary><a href="/salary-report/<%= empData.emp_id %>"><i class="fa-solid fa-users"></i>My Salary</a></summary>
+                    </details>
+
+                    <a class="logOut" href="/auth/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> log out</a>
+                </div>        
+            </section>
+        
+    
+            <!--------- BODY / MAIN --------->
+            <section class="body_main ">
+                <div class="top_bar">
+                    <div onclick="hideMenu()" title="Side Bar" class="menu_bars ">
+                    <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+    
+                <h1>Staff Dashboard</h1>
+
+            </section>
+            <% if (messages.success) { %>
+                <div class="scss_mssg_cont">
+                    <div class="scss_mssg">
+                        <span class="closeX" onclick="closeX()"><i class="fa-solid fa-xmark"></i></span>
+                        <h3>Welcome<br><%- messages.success %></h3>
+                    </div>
+                </div> 
+            <% } %> 
+    
+        <script>
+            function hideMenu(){
+                document.querySelector('.dash_menu').classList.toggle('showHide');
+                document.querySelector('.body_main').classList.toggle('width_adjust');
+            }
+
+            var closeX = () => {
+                document.querySelector('.scss_mssg_cont').classList.add('close');
+            }
+        </script>
+    </body>
+</html>

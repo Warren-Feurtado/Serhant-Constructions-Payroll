@@ -20,7 +20,7 @@ router.get('/employees', (req, res) => {
 });
 
   /* GET ACCOUNTS EMPLOYEE SALARY REPORT. */
-  router.get('/employee/:id/salary-report', (req, res) => {
+router.get('/employee/:id/salary-report', (req, res) => {
     if (req.session.loggedin == true && req.session.emp_pos == 2 || req.session.loggedin == true && req.session.emp_pos == 3){
 
         conn.query('SELECT emp.emp_fnm, emp.emp_lnm, emp.dep_id, dep.dep_nm, pct.cycle_strt, pct.cycle_end, salRep.* FROM employees emp, departments dep, salary_report salRep, pay_cycles pct WHERE dep.id = emp.dep_id AND pct.id = salRep.cycle_id AND emp.id = salRep.emplee_id AND salRep.emplee_id = "' + req.params.id + '";', (err, empSalDets) => {
