@@ -1,5 +1,7 @@
-.form_ctrl{
-    width: 100%;
+.body_main .form_ctrl{
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 }
 
 .form_ctrl h2{
@@ -7,18 +9,37 @@
     margin-top: 2vw;
 }
 
-.empAddForm{
+form{
     width: 40%;
     /* float: right; */
     padding: 1vw 1vw 2vw 1vw;
     margin: 2vw auto 0 auto;
-    background: rgba(255, 255, 255, 0.285);
-    border: 1px solid rgba(255, 255, 255, 0.158);
-    box-shadow: 2px 4px 7px 1px rgba(0, 0, 0, 0.177);
-    border-radius: 10px;
+    /* background: rgba(255, 255, 255, 0.285); */
+    /* border: 1px solid rgba(255, 255, 255, 0.158); */
+    /* box-shadow: 2px 4px 7px 1px rgba(0, 0, 0, 0.177); */
+    /* border-radius: 10px; */
 }
 
-.empAddForm .flexInptBx{
+.form_ctrl .hrsaddForm, .form_ctrl .hrsUpdtForm{
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
+.hrsaddForm h3, .hrsUpdtForm h3{
+    margin-bottom: 2vw;
+}
+
+.hrsaddForm input, .hrsUpdtForm input{
+    width: 100%;
+}
+
+form table{
+    width: 100%;
+    /* border: 1px solid red; */
+    /* margin: auto; */
+}
+
+form .flexInptBx{
     width: 100%;
     display: flex;
     align-items: center;
@@ -38,7 +59,7 @@
     /* border: 1px solid red; */
 }
 
-.empAddForm label{
+form label{
     font-weight: 800;
     color: rgb(0, 0, 0);
 }
@@ -51,7 +72,7 @@
     width: 100%;
 }
 
-.empAddForm .inptBx{
+form .inptBx{
     width: 100%;
     margin-top: 1vw;
     /* border: 1px solid red; */
@@ -68,12 +89,20 @@
 input, select, textarea{
     height: 2.5vw;
     font-weight: 600;
-    color: rgb(90, 90, 90);
+    color: rgb(29, 29, 29);
     padding: 0 0.7vw;
     margin-top: 0.2vw;
     background: rgba(255, 255, 255, 0.54);
-    border-radius: 5px;
-    border: 1px solid rgb(228, 228, 228);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.295);
+}
+
+input:disabled{
+    background: rgb(134, 134, 134);
+}
+
+input:disabled:hover{
+    border: 1px solid rgba(0, 0, 0, 0.295);
 }
 
 textarea{

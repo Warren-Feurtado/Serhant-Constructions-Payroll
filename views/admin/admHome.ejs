@@ -41,17 +41,12 @@
                         <details class="option">
                             <summary><i class="fa-solid fa-users"></i>My Department</summary>
                             <p><a href="/admin/employees" title="View All Department Employees">Employees</a></p>
-                            <p><a href="/admin/pay-cycles" title="View Employee Pay-Cycles">Pay Cycles</a></p>
-                            <p><a href="/admin/pay-cycles" title="View Employee Pay-Cycles">Department Salary</a></p>
+                            <p><a href="/admin/department/salary-summary" title="View Department Salary Summary">Department Salary</a></p>
                         </details>
 
                     <%} else if (my_session.loggedin == true && my_session.emp_pos == 3){%>
                         <details class="option">
-                            <summary><a href="/admin/dolphin-cove-bookings" title="View All Dolphin Cove Bookings"><i class="fa-solid fa-book-bookmark"></i>Cove Bookings</a></summary>
-                        </details>
-
-                        <details class="option">
-                            <summary><a href="/admin/dolphin-cove-programs" title="View All Dolphin Cove Programs"><i class="fa-solid fa-calendar-days"></i>Cove Programs</a></summary>
+                            <summary><a href="/accounts/employees"><i class="fa-solid fa-users"></i>Manage Employees</a></summary>
                         </details>
                     <%} %>
 

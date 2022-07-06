@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheets/admin.css">
-        <link rel="stylesheet" href="/stylesheets/tables.css">
         <link rel="stylesheet" href="/stylesheets/admEmpForm.css">
         <script src="https://kit.fontawesome.com/d1a2b3af9c.js" crossorigin="anonymous"></script>
         <title><%= title %></title>
@@ -65,13 +64,14 @@
                     </div>
                 </div>
     
-                <h1>Department Employees</h1>
+                <h1>Edit Employee</h1>
 
                 <section class="form_ctrl">
             
-                    <h2>New Employee Form</h2>
-                    <form action="/admin/employee/new" method="post" class="empAddForm">
+                    <!-- <h2>Employee EditForm</h2> -->
+                    <form action="/admin/employee/update/" method="post" class="empEditForm">
                         
+                        <input type="hidden" name="id" value= "<%= empData.id %>">
                         <input type="hidden" name="dep_id" value= "<%= my_session
                         .emp_dep %>">
                         <input type="hidden" name="pos_id" value= "4">
@@ -80,25 +80,37 @@
                             <div class="inpt">
                                 <label for="emp_fnm">First Name</label>
                                 <br>
-                                <input type="text" name="emp_fnm"- id="emp_fnm" placeholder="Employee First Name">
+                                <input type="text" name="emp_fnm" id="emp_fnm" value= "<%= empData.emp_fnm %>">
                             </div>
 
                             <div class="inpt2">
                                 <label for="emp_lnm">Last Name</label>
                                 <br>
-                                <input type="text" name="emp_lnm"- id="emp_lnm" placeholder="Employee Last Name">
+                                <input type="text" name="emp_lnm"- id="emp_lnm" placeholder="Employee Last Name" value= "<%= empData.emp_lnm %>">
+                            </div>
+                        </div>
+
+                        <div class="flexInptBx">
+                            <div class="inpt">
+                                <label for="dep_nm">Department</label>
+                                <br>
+                                <input type="text" name="dep_nm" id="dep_nm" value= "<%= empData.dep_nm %>" disabled>
+                            </div>
+
+                            <div class="inpt2">
+                                <label for="pos_nm">Position</label>
+                                <br>
+                                <input type="text" name="pos_nm" id="pos_nm" value= "<%= empData.pos_nm %>" disabled>
                             </div>
                         </div>
                         
                         <div class="inptBx">
                             <label for="emp_email">Email</label><br>
-                            <input type="email" id="emp_email" name="emp_email" placeholder="Employee Email">
+                            <input type="email" id="emp_email" name="emp_email" value= "<%= empData.emp_email %>">
                         </div>
 
-                        <div class="inptBx">
-                            <label for="emp_pss">Password</label><br>
-                            <input type="password" id="emp_pss" name="emp_pss" placeholder="Employee Password">
-                        </div>
+                            <input type="hidden" id="emp_pss" name="emp_pss" value= "<%= empData.emp_pss %>">
+
 
                         <div class="btnContain">
                             <button type="submit">Submit</button>
@@ -108,52 +120,12 @@
                 </section>
                 <br><br><br>
 
-                <h2 style="text-align: center; color: rgb(0, 0, 0);"><%= depPosData.dep_nm %> Employees</h2>
-                <div class="table-contain">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID#</th>
-                                <th>Employee</th>
-                                <th>Position</th>
-                                <th>Department</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if(depEmpData.length){
-                   
-                                for(var i = 0; i < depEmpData.length; i++) {%>  
-                                    <tr>
-                                        <th><%= depEmpData[i].id %></th>
-                                        <td><%= depEmpData[i].emp_fnm %> <%= depEmpData[i].emp_lnm %></td>
-                                        <td><%= depEmpData[i].pos_nm %></td>
-                                        <td><%= depEmpData[i].dep_nm %></td> 
-                                        <td colspan="2">
-                                            <a href="/admin/employee/edit/<%= depEmpData[i].id %>" title="Edit this Employee's Details"><i class="fa-solid fa-pencil"></i></a>&nbsp;                                            
-                                            <a href="/admin/employee/<%= depEmpData[i].id %>/work-hours" title="Edit this Employee's Work Hours"><i class="fa-solid fa-clock-rotate-left"></i></a>                                            
-                                        </td>
-                                    </tr>
-                                <% }
-                            }else{ %>
-                                <tr>
-                                    <td colspan="6"><h2>No Employees</h2>
-                                        <div class="empty">
-                                            <img src="https://assets.materialup.com/uploads/c83a9663-be0b-4397-b1af-67f520e44ef1/preview.png" alt="">
-                                        </div>
-                                    </td>
-                                </tr>
-                            <% } %>    
-                        </tbody>
-                    </table>
-                </div>
-
             </section>
             <% if (messages.success) { %>
                 <div class="scss_mssg_cont">
                     <div class="scss_mssg">
                         <span class="closeX" onclick="closeX()"><i class="fa-solid fa-xmark"></i></span>
-                        <h3><%- messages.success %></h3>
+                        <h3>Welcome<br><%- messages.success %></h3>
                     </div>
                 </div> 
             <% } %> 

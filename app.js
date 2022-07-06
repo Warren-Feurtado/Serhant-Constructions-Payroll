@@ -17,7 +17,7 @@ var mysql = require('mysql2');
 //Setup External Files
 // var connection  = require('./lib/db');
 
-// var indexRouter = require('./routes/staff');
+var accountsRouter = require('./routes/accounts');
 var adminRouter = require('./routes/admin');
 var authRouter = require('./routes/auth');
 var staffRouter = require('./routes/staff');
@@ -49,7 +49,7 @@ var app = express();
  app.use(flash());
  
  app.use('/', staffRouter);
-//  app.use('/user', usersRouter);
+ app.use('/accounts', accountsRouter);
  app.use('/auth', authRouter);
  app.use('/admin', adminRouter);
  
