@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
     }
 });
 
+/* GET ADMIN EMPLOYEES PAGE. */
 router.get('/employees', (req, res) => {
     if (req.session.loggedin == true && req.session.emp_pos == 2 || req.session.loggedin == true && req.session.emp_pos == 3){
 
